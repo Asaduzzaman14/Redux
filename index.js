@@ -1,3 +1,5 @@
+const { createStore } = require('redux');
+
 //defining variable
 const INCREMENT = 'INCREMENT';
 const DECREMENT = 'DECREMENT';
@@ -15,7 +17,7 @@ const initialCounterState = {
 // };
 
 // action creter - object type, paylode
-const icrementCounter = () => {
+const incrementCounter = () => {
     return {
         type: INCREMENT,
     }
@@ -23,11 +25,12 @@ const icrementCounter = () => {
 
 const decrementCounter = () => {
     return {
-        type: INCREMENT,
+        type: DECREMENT,
     }
 }
 
-const counter = (state = initialCounterState, action) => {
+const counterReducer = (state = initialCounterState, action) => {
+
     switch (action.type) {
 
         case INCREMENT:
@@ -65,10 +68,21 @@ const counter = (state = initialCounterState, action) => {
 //  1. state
 //  2. dispatch action
 //  3 . reducer
+
 //  4. store
+// 4.1 getState(), dispatch(), subscribe()
 
 
+// crete store
 
+const store = createStore(counterReducer)
 
-// ////////////
+store.subscribe(() => {
+    console.log((store.getState()));
+})
 
+store.dispatch(incrementCounter())
+store.dispatch(incrementCounter())
+store.dispatch(incrementCounter())
+store.dispatch(incrementCounter())
+store.dispatch(decrementCounter())
