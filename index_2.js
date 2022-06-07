@@ -5,56 +5,36 @@ const { createStore } = require('redux');
 // reducer
 //  store
 
-const INCREMENT = "INCREMENT"
-const DECREMENT = "DECREMENT"
-const RESET = "RESET"
+const ADD_USER = "ADD_USER"
 
 // state
 const initialState = {
-    count: 0
+    users: ['asad'],
+    count: 1
 }
 
 //  despatch action
-const incrementCount = () => {
+const addUSER = (user) => {
 
     return {
-        type: INCREMENT
+        type: ADD_USER,
+        paylode: user
     }
 }
-const decrementCount = () => {
-    return {
-        type: DECREMENT
-    }
-}
-const reset = () => {
-    return {
-        type: RESET
-    }
-}
+
+
 
 //  reducer
 
-const counterReducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
-        case INCREMENT:
+        case ADD_USER:
             return {
-                ...state,
+                users: [...state.users, action.paylode],
                 count: state.count + 1
             }
-
-        case DECREMENT:
-            return {
-                ...state,
-                count: state.count - 1
-            }
-        case RESET:
-            return {
-                ...state,
-                count: 0
-            }
-
 
 
         default:
@@ -63,17 +43,12 @@ const counterReducer = (state = initialState, action) => {
 }
 
 // store
-const store = createStore(counterReducer)
+const store = createStore(userReducer)
 
 store.subscribe(() => {
     console.log(store.getState());
 })
 
 
-store.dispatch(incrementCount())
-store.dispatch(incrementCount())
-store.dispatch(incrementCount())
-store.dispatch(decrementCount())
-store.dispatch(reset())
-
-store.dispatch(incrementCount())
+store.dispatch(addUSER('hello'))
+store.dispatch(addUSER('hi'))
