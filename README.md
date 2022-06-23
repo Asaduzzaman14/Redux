@@ -1,7 +1,7 @@
 
-
-###multi reducer 
 {
+
+### multi reducer 
 const { createStore, combineReducers } = require('redux');
 
 
