@@ -29,6 +29,7 @@ const decrementCounter = () => {
     }
 }
 
+// reducer
 const counterReducer = (state = initialCounterState, action) => {
 
     switch (action.type) {
