@@ -1,7 +1,7 @@
 
 
-## multi reducer 
-
+###multi reducer 
+{
 const { createStore, combineReducers } = require('redux');
 
 
@@ -117,3 +117,4 @@ store.dispatch(addProduct("pen"))
 
 store.dispatch(getCard())
 store.dispatch(addCard("card"))
+}
